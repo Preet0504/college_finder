@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+@theme {
+  --color-border: oklch(0.914 0.032 243);
+  --color-input: oklch(0.914 0.032 243);
+  --color-ring: oklch(0.533 0.166 261);
+  --color-background: oklch(1 0 0);
+  --color-foreground: oklch(1 0 0);
+  --color-primary: oklch(0.533 0.166 261);
+  --color-primary-foreground: oklch(1 0 0);
+  --color-secondary: oklch(0.961 0.04 250);
+  --color-secondary-foreground: oklch(1 0 0);
+  --color-destructive: oklch(0.602 0.184 27);
+  --color-destructive-foreground: oklch(1 0 0);
+  --color-muted: oklch(0.961 0.04 250);
+  --color-muted-foreground: oklch(1 0 0);
+  --color-accent: oklch(0.961 0.04 250);
+  --color-accent-foreground: oklch(1 0 0);
+  --color-popover: oklch(1 0 0);
+  --color-popover-foreground: oklch(1 0 0);
+  --color-card: oklch(1 0 0);
+  --color-card-foreground: oklch(1 0 0);
+  
+  --radius: 0.5rem;
+  
+  /* Animation keyframes */
+  @keyframes accordion-down {
+    from { height: 0; }
+    to { height: var(--radix-accordion-content-height); }
+  }
+  
+  @keyframes accordion-up {
+    from { height: var(--radix-accordion-content-height); }
+    to { height: 0; }
+  }
+  
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes slide-in-right {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+  }
+  
+  @keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* Animation utilities */
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-fade-in: fade-in 0.5s ease-out;
+  --animate-slide-in-right: slide-in-right 0.3s ease-out;
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  
+  .dark {
+    color-scheme: dark;
+    --color-background: oklch(0.049 0.084 262);
+    --color-foreground: oklch(0.98 0.04 250);
+    --color-card: oklch(0.049 0.084 262);
+    --color-card-foreground: oklch(0.98 0.04 250);
+    --color-popover: oklch(0.049 0.084 262);
+    --color-popover-foreground: oklch(0.98 0.04 250);
+    --color-primary: oklch(0.598 0.182 261);
+    --color-primary-foreground: oklch(0.112 0.047 262);
+    --color-secondary: oklch(0.175 0.033 262);
+    --color-secondary-foreground: oklch(0.98 0.04 250);
+    --color-muted: oklch(0.175 0.033 262);
+    --color-muted-foreground: oklch(0.651 0.02 256);
+    --color-accent: oklch(0.175 0.033 262);
+    --color-accent-foreground: oklch(0.98 0.04 250);
+    --color-destructive: oklch(0.306 0.063 27);
+    --color-destructive-foreground: oklch(0.98 0.04 250);
+    --color-border: oklch(0.175 0.033 262);
+    --color-input: oklch(0.175 0.033 262);
+    --color-ring: oklch(0.48 0.152 264);
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    background: linear-gradient(to right, rgb(37 99 235), rgb(147 51 234));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+  
+  .glass-card {
+    background-color: rgb(255 255 255 / 0.8);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgb(229 231 235);
+  }
+  
+  .dark .glass-card {
+    background-color: rgb(17 24 39 / 0.8);
+    border-color: rgb(55 65 81);
+  }
+  
+  .animate-gradient {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+  }
+}
